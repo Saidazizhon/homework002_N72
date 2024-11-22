@@ -1,0 +1,296 @@
+#top-navbar {
+  padding: 12px 0;
+  .top-navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    .top__nav-item {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      li {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 19.12px;
+        color: $black-clr;
+
+        a {
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 19.12px;
+          color: #a2a2a2;
+        }
+        .active {
+          color: #454545;
+        }
+      }
+    }
+  }
+}
+
+#bottom-navbar {
+  padding: 12px 0;
+
+  .bottom-navbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+    .nav__katalog {
+      height: 50px;
+      padding: 0px 27px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: #454545;
+      color: #fff;
+      svg {
+        font-size: 20px;
+      }
+    }
+    .nav__search {
+      flex: 1;
+      display: flex;
+      height: 50px;
+      border: 1px solid #454545;
+      transition: 0.2s;
+      border-radius: 100px;
+      position: relative;
+      input {
+        flex: 1;
+        padding: 14px 24px;
+        border: none;
+        height: 100%;
+        transition: 0.2s;
+        border-radius: 100px;
+      }
+      svg {
+        margin-right: 16px;
+        margin-top: 14px;
+        color: $black-clr;
+        font-size: 20px;
+      }
+      .search__result {
+        width: calc(100% + 2px);
+        max-height: 400px;
+        background: #fff;
+        border: 1px solid #454545;
+        position: absolute;
+        top: 100%;
+        border-radius: 0 0 20px 20px;
+        left: -1px;
+        z-index: 10;
+        overflow: hidden;
+        .search__item {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 12px 20px;
+          cursor: pointer;
+          svg {
+            margin: 0;
+          }
+          p {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+
+          &:hover {
+            background: $white-clr;
+          }
+        }
+      }
+    }
+    .nav__search.show {
+      border-radius: 20px 20px 0 0;
+      transition: 0.2s;
+      input {
+        transition: 0.2s;
+        border-radius: 20px 20px 0 0;
+      }
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      align-items: center;
+      .nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        cursor: pointer;
+        position: relative;
+        sup {
+          position: absolute;
+          top: -5px;
+          right: 5px;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #454545;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 16.39px;
+        }
+        svg {
+          font-size: 24px;
+          color: $black-clr;
+        }
+        .heart {
+          right: 13px;
+        }
+        span {
+          font-family: Manrope;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 16.39px;
+          text-align: left;
+          color: $black-clr;
+        }
+      }
+    }
+
+    //////////////  menu   //////////////////////////////////
+    .menu {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #bottom-navbar {
+    .bottom-navbar {
+      display: grid;
+      grid-template-columns: 30px 210px 1fr;
+      place-items: center;
+      row-gap: 5px;
+      .nav__logo {
+        order: -2;
+      }
+      .nav__katalog {
+        display: none;
+      }
+      .nav__search {
+        height: 40px;
+        width: 100%;
+        grid-column: 1 / -1;
+        svg {
+          margin: 9px 18px;
+          margin-left: 8px;
+        }
+        input {
+          padding-right: 0;
+        }
+      }
+      .nav__links {
+        order: -1;
+        place-self: center end;
+        .nav__link {
+          span {
+            display: none;
+          }
+          sup {
+            right: -5px;
+          }
+          .heart {
+            right: -5px;
+          }
+        }
+      }
+    }
+
+    //////////////  menu   //////////////////////////////////
+    .menu {
+      display: block !important;
+      order: -4;
+      cursor: pointer;
+    }
+  }
+  #top-navbar {
+    padding: 12px 0;
+    position: fixed;
+    top: 42px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 101;
+    transform: scaleY(0);
+    transition: 0.3s;
+    transform-origin: top;
+    .top-navbar {
+      flex-direction: column;
+      .top__nav-item {
+        flex-direction: column;
+        li {
+          padding-bottom: 10px;
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+  .menu-show {
+    transform: scaleY(1) !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #bottom-navbar {
+    padding: 12px 0;
+    .bottom-navbar {
+      column-gap: 16px;
+      grid-template-columns: 30px 150px 1fr;
+      .nav__logo {
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 100%;
+        }
+      }
+      .nav__links {
+        gap: 16px;
+      }
+    }
+
+    //////////////  menu   //////////////////////////////////
+    .menu {
+      display: block !important;
+      order: -4;
+    }
+  }
+  #call {
+    width: 300px !important;
+    h1 {
+      font-size: 28px !important;
+      line-height: 36px !important;
+    }
+  }
+}
+
+.navbar__show {
+  position: sticky;
+  top: -100px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 2px 2px 10px #0001;
+  animation: navbarAnimation 0.3s linear forwards;
+}
+
+@keyframes navbarAnimation {
+  to {
+    top: 0;
+  }
+}
